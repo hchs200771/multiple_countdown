@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const CountdownSetter = ({
   startTime,
@@ -54,7 +54,7 @@ const CountdownSetter = ({
     }
     if (newTime >= startTime.time) {
       alert(
-        `排程時間 [${hours} : ${mins} : ${secs}] 需早於開始時間 [${startTime.hours} : ${startTime.mins} : ${startTime.secs}]`
+        `排程時間 [${hours} : ${mins} : ${secs}] 需小於開始時間 [${startTime.hours} : ${startTime.mins} : ${startTime.secs}]`
       );
       return;
     }
@@ -183,8 +183,9 @@ const CountdownSetter = ({
                 </button>
               </li>
             ))}
-            <li className="mx-auto mt-2 flex w-9/12 justify-center  rounded-xl bg-sky-400 p-1 text-center text-2xl">
-              {startTime.hours} : {startTime.mins} : {startTime.secs} 開始計時
+            <li className="mx-auto mt-2 flex w-9/12 justify-evenly  rounded-xl bg-sky-400 p-1 text-center text-2xl">
+              <span className=" text-gray-500">開始時間 </span>
+              {startTime.hours} : {startTime.mins} : {startTime.secs}
             </li>
           </ul>
         </div>

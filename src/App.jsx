@@ -1,66 +1,35 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
-import poweredBy from "./powered-by-vitawind-dark.png";
+import React from "react";
+import { useState } from "react";
+import CountdownTimer from "./components/CountdownTimer";
+import CountdownSetter from "./components/CountdownSetter";
 
-function App() {
-  const [count, setCount] = useState(0);
+export default function App() {
+  const [startTime, setStartTime] = useState({
+    time: 20 * 1000,
+    hours: 0,
+    mins: 0,
+    secs: 20,
+  });
+  const [timeItems, setTimeItems] = useState([
+    { time: 3 * 60 * 1000, hours: 0, mins: 3, secs: 0 },
+  ]);
 
   return (
-    <div className="text-center selection:bg-green-900">
-      <header className="flex min-h-screen flex-col items-center justify-center bg-[#282c34] text-white">
-        <img
-          src={logo}
-          className="animate-speed h-60 motion-safe:animate-spin"
-          alt="logo"
+    <div className=" font-serif">
+      <h1 className="m-4 text-center text-5xl">Countdown Timer</h1>
+      <section className="flex flex-col justify-center">
+        <CountdownTimer
+          startTime={startTime}
+          timeItems={timeItems}
+          setStartTime={setStartTime}
         />
-        <style>
-          {
-            "\
-            .animate-speed{\
-              animation-duration:20s;\
-            }\
-          "
-          }
-        </style>
-        <p className="bg-gradient-to-r from-emerald-300 to-sky-300 bg-clip-text text-5xl font-black text-transparent selection:bg-transparent">
-          Vite + React + Tailwindcss v3
-        </p>
-        <p className="mt-3">
-          <button
-            type="button"
-            className="my-6 rounded bg-gray-300 px-2 py-2 text-[#282C34] transition-all hover:bg-gray-200"
-            onClick={() => setCount((count) => count + 1)}
-          >
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code className="text-[#8d96a7]">App.jsx</code> and save to test
-          HMR updates.
-        </p>
-        <p className="mt-3 flex gap-3 text-center text-[#8d96a7]">
-          <a
-            className="text-[#61dafb] transition-all hover:text-blue-400"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {" | "}
-          <a
-            className="text-[#61dafb] transition-all hover:text-blue-400"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-        <img src={poweredBy} className="mx-auto my-8" alt="powered-by" />
-      </header>
+        <CountdownSetter
+          startTime={startTime}
+          setStartTime={setStartTime}
+          timeItems={timeItems}
+          setTimeItems={setTimeItems}
+        ></CountdownSetter>
+      </section>
     </div>
   );
 }
-
-export default App;
