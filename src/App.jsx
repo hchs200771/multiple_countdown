@@ -47,8 +47,8 @@ export default function App() {
           ispauseCountdown={ispauseCountdown}
         ></CountdownSetter>
       </section>
-      <footer className="mt-5">
-        <ul className="list-inside list-disc">
+      <footer className="mt-5 flex flex-col items-center">
+        <ul className="m-1/2 mx-auto list-inside list-disc">
           <li>開始倒數後，除非重置，否則無法修改開始時間跟提醒排程</li>
           <li>按 ↑ 或 ↓ 可調整數字。 </li>
           <li>
