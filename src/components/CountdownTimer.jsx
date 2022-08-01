@@ -97,7 +97,7 @@ const CountdownTimer = ({
               onClick={setToMute}
               className="h-12 w-28 rounded-xl bg-green-200 py-1 text-center font-bold text-black ring-2  hover:bg-green-400"
             >
-              關掉提示音
+              關聲音
             </button>
           </div>
         </div>

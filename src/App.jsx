@@ -51,9 +51,7 @@ export default function App() {
         <ul className="m-1/2 mx-auto list-inside list-disc">
           <li>開始倒數後，除非重置，否則無法修改開始時間跟提醒排程</li>
           <li>按 ↑ 或 ↓ 可調整數字。 </li>
-          <li>
-            按下「關掉提示音」關掉音樂後，下一個排程時間或是歸零才會再次響起
-          </li>
+          <li>按下「關聲音」關掉音樂後，下一個排程時間或是歸零又會再次響起</li>
         </ul>
         <p className="mt-5">Copyright © 2022 Max Huang</p>
       </footer>
