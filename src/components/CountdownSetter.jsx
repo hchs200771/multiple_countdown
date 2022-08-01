@@ -146,13 +146,13 @@ const CountdownSetter = ({
             <div className="mb-3 flex w-3/5 items-center justify-center gap-4 p-1 lg:text-xl">
               <button
                 onClick={addTime}
-                className="mt-1 ml-3 h-12 w-40 rounded-xl bg-yellow-200 text-center font-bold  text-black hover:bg-yellow-400"
+                className="mt-1 ml-3 h-12 w-40 rounded-xl bg-yellow-200 px-1 text-center font-bold text-black  ring-2 hover:bg-yellow-400"
               >
                 新增排程時間
               </button>
               <button
                 onClick={addStartTime}
-                className="mt-1 h-12 w-40 rounded-xl bg-gray-200 text-center font-bold text-black  hover:bg-gray-400"
+                className="mt-1 h-12 w-40 rounded-xl bg-gray-200 px-1 text-center font-bold text-black ring-2  hover:bg-gray-400"
               >
                 設定開始時間
               </button>
