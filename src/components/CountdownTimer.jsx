@@ -1,11 +1,10 @@
 import React from "react";
 import clsx from "clsx";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import DateTimeDisplay from "./DateTimeDisplay";
 import { useCountdown } from "../hooks/useCountdown";
 import soundfile from "../johnnie-holiday-wild.mp3";
-import { useEffect } from "react/cjs/react.development";
 
 const CountdownTimer = ({
   startTime,
