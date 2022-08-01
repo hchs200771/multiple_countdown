@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import { useState } from "react";
 
 const CountdownSetter = ({
@@ -6,6 +7,9 @@ const CountdownSetter = ({
   setStartTime,
   timeItems,
   setTimeItems,
+  setCountDown,
+  isStartCountdown,
+  ispauseCountdown,
 }) => {
   // debugger;
   const [hours, setHours] = useState(0);
@@ -39,6 +43,7 @@ const CountdownSetter = ({
       secs,
     };
     setStartTime(newStartTime);
+    setCountDown(newTime);
   };
 
   const addTime = () => {
@@ -90,7 +95,7 @@ const CountdownSetter = ({
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="relative flex flex-col">
       <h2 className="mt-4 h-1/2 text-center text-4xl font-extrabold"> 排程 </h2>
       <div className="continer mx-auto w-9/12 items-center justify-center">
         {/* 排程設定及 list */}
@@ -157,7 +162,7 @@ const CountdownSetter = ({
                 key={timeItem.time}
                 className="mx-auto mt-2 flex w-1/2  justify-center rounded-xl bg-sky-100 p-1 text-center"
               >
-                <p className="flex w-20 items-center text-xl">
+                <p className="flex w-24 items-center text-xl">
                   {timeItem.hours} : {timeItem.mins} : {timeItem.secs}
                 </p>
                 <button
@@ -190,6 +195,12 @@ const CountdownSetter = ({
           </ul>
         </div>
       </div>
+      <div
+        className={clsx(
+          "absolute top-2 h-full w-full rounded bg-gray-800 opacity-50",
+          isStartCountdown || ispauseCountdown ? "h-full w-full" : "h-0, w-0"
+        )}
+      ></div>
     </div>
   );
 };

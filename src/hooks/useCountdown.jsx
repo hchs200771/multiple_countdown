@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 
-const useCountdown = (startTime, isStartCountdown, ispauseCountdown) => {
-  const [countDown, setCountDown] = useState(startTime);
+const useCountdown = (
+  countDown,
+  setCountDown,
+  startTime,
+  isStartCountdown,
+  ispauseCountdown,
+  timeItems,
+  setTimeItems,
+  toggleIsMusicPlaying
+) => {
   let interval;
 
   useEffect(() => {
@@ -16,8 +24,12 @@ const useCountdown = (startTime, isStartCountdown, ispauseCountdown) => {
   useEffect(() => {
     interval = setInterval(() => {
       if (isStartCountdown && startTime > 0 && !ispauseCountdown) {
-        setCountDown((startTime) => {
-          return startTime - 1000;
+        setCountDown((countDown) => {
+          if (timeItems.some((item) => item.time === countDown - 1000)) {
+            toggleIsMusicPlaying(true);
+          }
+          if (countDown === 1000) toggleIsMusicPlaying(true);
+          return countDown - 1000;
         });
       }
     }, 1000);
