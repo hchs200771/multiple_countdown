@@ -161,8 +161,8 @@ const CountdownSetter = ({
           </div>
           {/* 排程 list */}
           <ul className="w-full p-1  lg:w-4/12">
-            <li className="mt-2 flex w-9/12 justify-evenly rounded-xl  bg-sky-400 p-1 text-center text-2xl lg:mx-auto">
-              <span className=" text-gray-500">開始時間 </span>
+            <li className="mx-auto mt-2 flex w-9/12 justify-evenly  rounded-xl bg-sky-400 p-1 text-center text-2xl">
+              <span className=" text-gray-500"> 開始時間 </span>
               {startTime.hours} : {startTime.mins} : {startTime.secs}
             </li>
             {timeItems.map((timeItem) => (
