@@ -83,19 +83,19 @@ const CountdownTimer = ({
           <div className="mx-auto flex h-28 w-9/12 items-center justify-center gap-6 rounded-2xl pt-2 text-xl">
             <button
               onClick={startCountdown}
-              className="h-12 w-24 rounded-xl bg-indigo-200 text-center font-bold text-black ring-2 ring-green-400 hover:bg-indigo-400"
+              className="h-12 w-24 rounded-xl bg-indigo-200 py-1 text-center font-bold text-black ring-2 ring-green-400 hover:bg-indigo-400"
             >
               {isStartCountdown ? "暫停" : "開始"}
             </button>
             <button
               onClick={cancelCountdown}
-              className="h-12 w-24 rounded-xl bg-red-200 text-center font-bold text-black ring-2 ring-sky-400 hover:bg-red-400"
+              className="h-12 w-24 rounded-xl bg-red-200 py-1 text-center font-bold text-black ring-2 ring-sky-400 hover:bg-red-400"
             >
               重置
             </button>
             <button
               onClick={setToMute}
-              className="h-12 w-28 rounded-xl bg-green-200 text-center font-bold text-black ring-2  hover:bg-green-400"
+              className="h-12 w-28 rounded-xl bg-green-200 py-1 text-center font-bold text-black ring-2  hover:bg-green-400"
             >
               關掉提示音
             </button>
