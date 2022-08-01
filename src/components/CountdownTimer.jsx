@@ -62,12 +62,16 @@ const CountdownTimer = ({
       <div className="flex justify-center gap-2">
         <div
           className={clsx(
-            "mx-auto items-center justify-between rounded-2xl border-2 border-gray-900 pt-5  font-sans text-red-500 lg:w-2/3",
+            "mx-auto w-full items-center justify-between rounded-2xl border-2 border-gray-900  pt-5 font-sans text-red-500 lg:w-2/3",
             isStartCountdown ? "bg-sky-300" : ""
           )}
         >
-          <div className="mx-auto flex w-9/12 justify-center text-6xl">
-            <DateTimeDisplay value={hours} type={"Hours"} className="w-1/4" />
+          <div className="mx-auto flex w-9/12 justify-center text-4xl sm:text-6xl">
+            <DateTimeDisplay
+              value={hours}
+              type={"Hours"}
+              className="sm:w-1/4"
+            />
             <p>:</p>
             <DateTimeDisplay value={minutes} type={"Mins"} className="w-1/4" />
             <p>:</p>
@@ -82,7 +86,7 @@ const CountdownTimer = ({
               onClick={startCountdown}
               className="h-12 w-24 rounded-xl bg-indigo-200 text-center font-bold text-black ring-2 ring-green-400 hover:bg-indigo-400"
             >
-              {isStartCountdown ? "暫停" : "啟動"}
+              {isStartCountdown ? "暫停" : "開始"}
             </button>
             <button
               onClick={cancelCountdown}

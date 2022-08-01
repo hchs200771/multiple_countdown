@@ -29,11 +29,11 @@ const CountdownSetter = ({
     const newTime = (hours * 60 * 60 + mins * 60 + Number(secs)) * 1000;
 
     if (!Number(hours + mins + secs)) {
-      alert("開始時段不能為 0");
+      alert("開始時間不能為 0");
       return;
     }
     if (timeItems.some((item) => item.time >= newTime)) {
-      alert("開始時段必須早於最大排程時間");
+      alert("開始時間必須早於最大排程時間");
       return;
     }
     const newStartTime = {
@@ -99,39 +99,43 @@ const CountdownSetter = ({
       <h2 className="mt-4 h-1/2 text-center text-4xl font-extrabold"> 排程 </h2>
       <div className="continer mx-auto w-9/12 items-center justify-center">
         {/* 排程設定及 list */}
-        <div className="mt-2 flex rounded p-10 pt-3 font-sans font-extrabold">
+        <div className="mt-2 flex flex-col rounded font-sans font-extrabold sm:pl-20 lg:flex-row">
           {/* 排程設定*/}
-          <div className=" h-30 mt-1 flex w-3/5 flex-col items-center justify-evenly rounded-2xl bg-lime-200 ">
+          <div className="h-30 mt-1 flex w-80 flex-col items-center justify-evenly rounded-2xl bg-lime-200 sm:w-4/5 lg:w-3/5 ">
             <div className="m-10 my-3 flex w-8/12 justify-center rounded font-sans lg:w-2/3">
               <label className="flex flex-col text-center text-2xl">
                 Hours
                 <input
                   type="number"
-                  className=" w-30 box-border h-14 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300"
+                  className="box-border h-14 rounded  border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="99"
                   onChange={hoursChangeHandler}
                   value={hours}
                 />
               </label>
-              <p className="mt-9 w-10 text-center text-4xl text-red-400">:</p>
+              <p className="mt-9 w-10 px-1 text-center text-4xl text-red-400 lg:px-0">
+                :
+              </p>
               <label className="flex flex-col text-center text-2xl">
                 Mins
                 <input
                   type="number"
-                  className="box-border h-14 w-20 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300"
+                  className="box-border h-14 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="59"
                   onChange={minsChangeHandler}
                   value={mins}
                 />
               </label>
-              <p className="mt-9 w-10 text-center text-4xl text-red-400">:</p>
+              <p className="mt-9 w-10 px-1 text-center text-4xl text-red-400 lg:px-0">
+                :
+              </p>
               <label className="flex flex-col text-center text-2xl">
                 Secs
                 <input
                   type="number"
-                  className=" box-border h-14 w-20 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300"
+                  className=" box-border h-14 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="59"
                   onChange={secsChangeHandler}
@@ -139,7 +143,7 @@ const CountdownSetter = ({
                 />
               </label>
             </div>
-            <div className="mb-3 flex w-3/5 items-center justify-center gap-4 text-xl">
+            <div className="mb-3 flex w-3/5 items-center justify-center gap-4 p-1 lg:text-xl">
               <button
                 onClick={addTime}
                 className="mt-1 ml-3 h-12 w-40 rounded-xl bg-yellow-200 text-center font-bold  text-black hover:bg-yellow-400"
@@ -156,7 +160,11 @@ const CountdownSetter = ({
             </div>
           </div>
           {/* 排程 list */}
-          <ul className="w-4/12 p-1">
+          <ul className="w-full p-1  lg:w-4/12">
+            <li className="mt-2 flex w-9/12 justify-evenly rounded-xl  bg-sky-400 p-1 text-center text-2xl lg:mx-auto">
+              <span className=" text-gray-500">開始時間 </span>
+              {startTime.hours} : {startTime.mins} : {startTime.secs}
+            </li>
             {timeItems.map((timeItem) => (
               <li
                 key={timeItem.time}
@@ -188,16 +196,12 @@ const CountdownSetter = ({
                 </button>
               </li>
             ))}
-            <li className="mx-auto mt-2 flex w-9/12 justify-evenly  rounded-xl bg-sky-400 p-1 text-center text-2xl">
-              <span className=" text-gray-500">開始時間 </span>
-              {startTime.hours} : {startTime.mins} : {startTime.secs}
-            </li>
           </ul>
         </div>
       </div>
       <div
         className={clsx(
-          "absolute top-2 h-full w-full rounded bg-gray-800 opacity-50",
+          "absolute top-2 h-full w-full rounded bg-gray-800 opacity-50 transition-all duration-300",
           isStartCountdown || ispauseCountdown ? "h-full w-full" : "h-0, w-0"
         )}
       ></div>
