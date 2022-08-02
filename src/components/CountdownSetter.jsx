@@ -101,13 +101,13 @@ const CountdownSetter = ({
         {/* 排程設定及 list */}
         <div className="mt-2 flex flex-col rounded font-sans font-extrabold sm:pl-20 lg:flex-row">
           {/* 排程設定*/}
-          <div className="h-30 mt-1 flex w-full flex-col items-center justify-evenly rounded-2xl bg-lime-200 sm:w-4/5 lg:w-3/5 ">
+          <div className="h-30 mt-1 flex w-full flex-col items-center justify-evenly rounded-2xl bg-lime-600 sm:w-4/5 lg:w-3/5">
             <div className="m-10 my-3 flex w-full justify-center rounded font-sans sm:w-4/5 lg:w-2/3">
               <label className="flex flex-col text-center text-2xl">
                 Hours
                 <input
                   type="number"
-                  className="box-border h-14 w-10 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
+                  className="w-18 box-border h-14 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="99"
                   onChange={hoursChangeHandler}
@@ -121,7 +121,7 @@ const CountdownSetter = ({
                 Mins
                 <input
                   type="number"
-                  className="box-border h-14 w-10 rounded  border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
+                  className="w-18 box-border h-14 rounded  border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="59"
                   onChange={minsChangeHandler}
@@ -135,7 +135,7 @@ const CountdownSetter = ({
                 Secs
                 <input
                   type="number"
-                  className="box-border h-14 w-10 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
+                  className="w-18 box-border h-14 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="59"
                   onChange={secsChangeHandler}
@@ -152,7 +152,7 @@ const CountdownSetter = ({
               </button>
               <button
                 onClick={addStartTime}
-                className="mt-1 h-12 w-40 rounded-xl bg-gray-200 px-1 text-center font-bold text-black ring-2  hover:bg-gray-400"
+                className="mt-1 h-12 w-40 rounded-xl bg-sky-400 px-1 text-center font-bold text-black ring-2 hover:bg-sky-600"
               >
                 設定開始時間
               </button>
@@ -161,15 +161,32 @@ const CountdownSetter = ({
           </div>
           {/* 排程 list */}
           <ul className="w-full p-1  lg:w-4/12">
-            <li className="mx-auto mt-2 flex w-9/12 justify-evenly  rounded-xl bg-sky-400 p-1 text-center text-2xl">
+            <li className="mx-auto mt-1 flex w-9/12 justify-evenly rounded-xl bg-sky-400 p-1 text-center text-2xl">
               <span className=" text-gray-500"> 開始時間 </span>
               {startTime.hours} : {startTime.mins} : {startTime.secs}
+            </li>
+            <li className="mx-auto mt-2 flex w-9/12 justify-evenly rounded-xl p-1 text-center text-2xl">
+              提醒排程
             </li>
             {timeItems.map((timeItem) => (
               <li
                 key={timeItem.time}
-                className="mx-auto mt-2 flex w-1/2  justify-center rounded-xl bg-sky-100 p-1 text-center"
+                className="mx-auto mt-2 flex w-1/2 justify-evenly rounded-xl bg-yellow-200 p-1 text-center"
               >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mt-0.5 h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
                 <p className="flex w-24 items-center text-xl">
                   {timeItem.hours} : {timeItem.mins} : {timeItem.secs}
                 </p>

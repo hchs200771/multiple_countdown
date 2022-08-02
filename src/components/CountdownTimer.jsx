@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { useRef, useEffect } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import DateTimeDisplay from "./DateTimeDisplay";
-import { useCountdown } from "../hooks/useCountdown";
+import useCountdown from "../hooks/useCountdown";
 import soundfile from "../johnnie-holiday-wild.mp3";
 
 const CountdownTimer = ({
@@ -26,7 +26,6 @@ const CountdownTimer = ({
     isStartCountdown,
     ispauseCountdown,
     timeItems,
-    setTimeItems,
     toggleIsMusicPlaying
   );
   const musicPlayer = useRef();
@@ -61,8 +60,8 @@ const CountdownTimer = ({
       <div className="flex justify-center gap-2">
         <div
           className={clsx(
-            "mx-auto w-full items-center justify-between rounded-2xl border-2 border-gray-900  pt-5 font-sans text-red-500 lg:w-2/3",
-            isStartCountdown ? "bg-sky-300" : ""
+            "mx-auto w-full items-center justify-between rounded-2xl border-2 border-gray-900 bg-blue-300  pt-5 font-sans text-red-500 lg:w-2/3",
+            isStartCountdown ? "bg-sky-500" : ""
           )}
         >
           <div className="mx-auto flex w-9/12 justify-center text-4xl sm:text-6xl">

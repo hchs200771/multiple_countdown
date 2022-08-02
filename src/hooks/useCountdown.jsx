@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const useCountdown = (
   countDown,
@@ -7,7 +7,6 @@ const useCountdown = (
   isStartCountdown,
   ispauseCountdown,
   timeItems,
-  setTimeItems,
   toggleIsMusicPlaying
 ) => {
   let interval;
@@ -56,4 +55,4 @@ const getReturnValues = (countDown) => {
   return [hours, minutes, seconds];
 };
 
-export { useCountdown };
+export default useCountdown;
