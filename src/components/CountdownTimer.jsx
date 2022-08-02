@@ -64,7 +64,7 @@ const CountdownTimer = ({
             isStartCountdown ? "bg-sky-500" : ""
           )}
         >
-          <div className="mx-auto flex w-9/12 justify-center text-4xl sm:text-6xl">
+          <div className="mx-auto flex w-9/12 justify-center text-6xl">
             <DateTimeDisplay
               value={hours}
               type={"Hours"}
