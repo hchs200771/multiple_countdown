@@ -107,7 +107,7 @@ const CountdownSetter = ({
                 Hours
                 <input
                   type="number"
-                  className="box-border h-14 w-10 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
+                  className="box-border h-14 w-14 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="99"
                   onChange={hoursChangeHandler}
@@ -121,7 +121,7 @@ const CountdownSetter = ({
                 Mins
                 <input
                   type="number"
-                  className="box-border h-14 w-10 rounded  border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
+                  className="box-border h-14 w-14 rounded  border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="59"
                   onChange={minsChangeHandler}
@@ -135,7 +135,7 @@ const CountdownSetter = ({
                 Secs
                 <input
                   type="number"
-                  className="box-border h-14 w-10 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
+                  className="box-border h-14 w-14 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="59"
                   onChange={secsChangeHandler}
