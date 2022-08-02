@@ -12,7 +12,7 @@ export default function App() {
   });
   const [timeItems, setTimeItems] = useState([
     { time: 38 * 1000, hours: 0, mins: 0, secs: 38 },
-    { time: 55 * 1000, hours: 0, mins: 0, secs: 50 },
+    { time: 55 * 1000, hours: 0, mins: 0, secs: 55 },
   ]);
   const [countDown, setCountDown] = useState(startTime);
   const [isMusicPlaying, toggleIsMusicPlaying] = useState(false);
