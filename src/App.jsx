@@ -16,9 +16,8 @@ export default function App() {
   ]);
   const [countDown, setCountDown] = useState(startTime);
   const [isMusicPlaying, toggleIsMusicPlaying] = useState(false);
-  // TODO:計時器三種狀態： 'countdowning', 'pause', 'before_start'
-  const [isStartCountdown, setIsStartCountdown] = useState(false);
-  const [ispauseCountdown, setIspauseCountdown] = useState(false);
+  // 計時器三種狀態： 倒數中：'countdowning',  暫停：'pause', 等待開始：'waitStart'
+  const [countdownState, setCountdownState] = useState("waitStart");
 
   return (
     <div className=" font-serif">
@@ -35,10 +34,8 @@ export default function App() {
           setCountDown={setCountDown}
           isMusicPlaying={isMusicPlaying}
           toggleIsMusicPlaying={toggleIsMusicPlaying}
-          isStartCountdown={isStartCountdown}
-          setIsStartCountdown={setIsStartCountdown}
-          ispauseCountdown={ispauseCountdown}
-          setIspauseCountdown={setIspauseCountdown}
+          countdownState={countdownState}
+          setCountdownState={setCountdownState}
         />
         <CountdownSetter
           startTime={startTime}
@@ -46,8 +43,7 @@ export default function App() {
           timeItems={timeItems}
           setTimeItems={setTimeItems}
           setCountDown={setCountDown}
-          isStartCountdown={isStartCountdown}
-          ispauseCountdown={ispauseCountdown}
+          countdownState={countdownState}
         ></CountdownSetter>
       </section>
       <footer className="mt-5 flex flex-col items-center">

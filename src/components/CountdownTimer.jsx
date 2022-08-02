@@ -9,43 +9,36 @@ import soundfile from "../johnnie-holiday-wild.mp3";
 const CountdownTimer = ({
   startTime,
   timeItems,
-  setTimeItems,
   countDown,
   setCountDown,
   isMusicPlaying,
   toggleIsMusicPlaying,
-  isStartCountdown,
-  setIsStartCountdown,
-  ispauseCountdown,
-  setIspauseCountdown,
+  countdownState,
+  setCountdownState,
 }) => {
   const [hours, minutes, seconds] = useCountdown(
     countDown,
     setCountDown,
     startTime.time,
-    isStartCountdown,
-    ispauseCountdown,
+    countdownState,
     timeItems,
     toggleIsMusicPlaying
   );
   const musicPlayer = useRef();
   const startCountdown = () => {
-    if (isStartCountdown) {
-      setIspauseCountdown(true);
-      setIsStartCountdown(false);
+    if (countdownState === "countdowning") {
+      setCountdownState("pause");
       toggleIsMusicPlaying(false);
     } else {
-      setIspauseCountdown(false);
-      setIsStartCountdown(true);
+      setCountdownState("countdowning");
     }
   };
   const cancelCountdown = () => {
-    setIspauseCountdown(false);
-    setIsStartCountdown(false);
+    setCountdownState("waitStart");
     toggleIsMusicPlaying(false);
   };
   useEffect(() => {
-    if (isMusicPlaying && isStartCountdown) {
+    if (isMusicPlaying && countdownState === "countdowning") {
       musicPlayer.current.audio.current.play();
     } else if (!isMusicPlaying) {
       musicPlayer.current.audio.current.pause();
@@ -61,7 +54,7 @@ const CountdownTimer = ({
         <div
           className={clsx(
             "mx-auto w-full items-center justify-between rounded-2xl border-2 border-gray-900 bg-blue-300  pt-5 font-sans text-red-500 lg:w-2/3",
-            isStartCountdown ? "bg-sky-500" : ""
+            countdownState === "countdowning" ? "bg-sky-500" : ""
           )}
         >
           <div className="mx-auto flex w-9/12 justify-center text-6xl">
@@ -84,7 +77,7 @@ const CountdownTimer = ({
               onClick={startCountdown}
               className="h-12 w-24 rounded-xl bg-indigo-200 py-1 text-center font-bold text-black ring-2 ring-green-400 hover:bg-indigo-400"
             >
-              {isStartCountdown ? "暫停" : "開始"}
+              {countdownState === "countdowning" ? "暫停" : "開始"}
             </button>
             <button
               onClick={cancelCountdown}

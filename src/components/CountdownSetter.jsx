@@ -8,10 +8,8 @@ const CountdownSetter = ({
   timeItems,
   setTimeItems,
   setCountDown,
-  isStartCountdown,
-  ispauseCountdown,
+  countdownState,
 }) => {
-  // debugger;
   const [hours, setHours] = useState(0);
   const [mins, setMins] = useState(0);
   const [secs, setSecs] = useState(0);
@@ -96,7 +94,9 @@ const CountdownSetter = ({
 
   return (
     <div className="relative flex flex-col">
-      <h2 className="mt-4 h-1/2 text-center text-4xl font-extrabold"> 排程 </h2>
+      <h2 className="mt-4 h-1/2 text-center text-4xl font-extrabold">
+        排程設定
+      </h2>
       <div className="continer mx-auto w-full items-center justify-center lg:w-9/12">
         {/* 排程設定及 list */}
         <div className="mt-2 flex flex-col rounded font-sans font-extrabold sm:pl-20 lg:flex-row">
@@ -219,7 +219,7 @@ const CountdownSetter = ({
       <div
         className={clsx(
           "absolute top-2 h-full w-full rounded bg-gray-800 opacity-50 transition-all duration-300",
-          isStartCountdown || ispauseCountdown ? "h-full w-full" : "h-0, w-0"
+          countdownState !== "waitStart" ? "h-full w-full" : "h-0, w-0"
         )}
       ></div>
     </div>

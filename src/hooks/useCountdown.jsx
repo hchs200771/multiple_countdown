@@ -4,25 +4,24 @@ const useCountdown = (
   countDown,
   setCountDown,
   startTime,
-  isStartCountdown,
-  ispauseCountdown,
+  countdownState,
   timeItems,
   toggleIsMusicPlaying
 ) => {
   let interval;
 
   useEffect(() => {
-    if (!isStartCountdown && startTime > 0 && ispauseCountdown) {
+    if (countdownState === "pause") {
       clearInterval(interval);
-    } else if (!isStartCountdown && startTime > 0) {
+    } else if (countdownState === "waitStart") {
       clearInterval(interval);
       setCountDown(startTime);
     }
-  }, [isStartCountdown, ispauseCountdown]);
+  }, [countdownState]);
 
   useEffect(() => {
     interval = setInterval(() => {
-      if (isStartCountdown && startTime > 0 && !ispauseCountdown) {
+      if (countdownState === "countdowning") {
         setCountDown((countDown) => {
           if (timeItems.some((item) => item.time === countDown - 1000)) {
             toggleIsMusicPlaying(true);
@@ -34,7 +33,7 @@ const useCountdown = (
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [startTime, isStartCountdown]);
+  }, [startTime, countdownState]);
 
   return getReturnValues(countDown);
 };
