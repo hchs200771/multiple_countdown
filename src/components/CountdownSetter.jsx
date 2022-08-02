@@ -107,7 +107,7 @@ const CountdownSetter = ({
                 Hours
                 <input
                   type="number"
-                  className="w-18 box-border h-14 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
+                  className="box-border h-14 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="99"
                   onChange={hoursChangeHandler}
@@ -121,7 +121,7 @@ const CountdownSetter = ({
                 Mins
                 <input
                   type="number"
-                  className="w-18 box-border h-14 rounded  border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
+                  className="box-border h-14 rounded  border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="59"
                   onChange={minsChangeHandler}
@@ -135,7 +135,7 @@ const CountdownSetter = ({
                 Secs
                 <input
                   type="number"
-                  className="w-18 box-border h-14 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
+                  className="box-border h-14 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="59"
                   onChange={secsChangeHandler}
@@ -171,7 +171,7 @@ const CountdownSetter = ({
             {timeItems.map((timeItem) => (
               <li
                 key={timeItem.time}
-                className="mx-auto mt-2 flex w-1/2 justify-evenly rounded-xl bg-yellow-200 p-1 text-center"
+                className="mx-auto mt-2 flex w-1/2 justify-around rounded-xl bg-yellow-200 p-1 text-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -192,12 +192,12 @@ const CountdownSetter = ({
                 </p>
                 <button
                   onClick={() => deleteTimeItem(timeItem.time)}
-                  className="ml-2"
+                  className="ml-1"
                 >
-                  <div className=" rounded bg-red-200">
+                  <div className="rounded bg-red-200">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className=" h-6 w-6"
+                      className="h-6 w-6"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
