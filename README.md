@@ -3,7 +3,8 @@ This countdown can set multiple periods of time.
 If the timer meet the time you set, it will make noice.
 The goal of this tool is to help people who wannt be reminded more than one time.
 
-![image](https://user-images.githubusercontent.com/38179285/182124582-8c55a9a7-57df-4182-994b-758bbde08df1.png)
+![image](https://user-images.githubusercontent.com/38179285/182289698-a2d7cf88-658e-4eda-8ee4-db104548532f.png)
+
 
 
 
