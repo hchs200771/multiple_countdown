@@ -161,7 +161,7 @@ const CountdownSetter = ({
           </div>
           {/* 排程 list */}
           <ul className="w-full p-1  lg:w-4/12">
-            <li className="mx-auto mt-1 flex w-9/12 justify-evenly rounded-xl bg-sky-400 p-1 text-center text-2xl">
+            <li className="mx-auto mt-1 flex w-11/12 justify-evenly rounded-xl bg-sky-400 p-1 text-center text-2xl">
               <span className=" text-gray-500"> 開始時間 </span>
               {startTime.hours} : {startTime.mins} : {startTime.secs}
             </li>
@@ -171,7 +171,7 @@ const CountdownSetter = ({
             {timeItems.map((timeItem) => (
               <li
                 key={timeItem.time}
-                className="mx-auto mt-2 flex w-1/2 justify-around rounded-xl bg-yellow-200 p-1 text-center"
+                className="mx-auto mt-2 flex w-8/12 justify-around rounded-xl bg-yellow-200 p-1 text-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -187,7 +187,7 @@ const CountdownSetter = ({
                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <p className="flex w-24 items-center text-xl">
+                <p className="flex w-28 items-center text-xl">
                   {timeItem.hours} : {timeItem.mins} : {timeItem.secs}
                 </p>
                 <button
