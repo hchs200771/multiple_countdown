@@ -2,11 +2,11 @@ import { useEffect } from "react";
 
 const useCountdown = (
   countDown,
-  setCountDown,
+  onCountDownChanged,
   startTime,
   countdownState,
   timeItems,
-  toggleIsMusicPlaying
+  onIsMusicPlayingChanged
 ) => {
   let interval;
 
@@ -15,18 +15,18 @@ const useCountdown = (
       clearInterval(interval);
     } else if (countdownState === "waitStart") {
       clearInterval(interval);
-      setCountDown(startTime);
+      onCountDownChanged(startTime);
     }
   }, [countdownState]);
 
   useEffect(() => {
     interval = setInterval(() => {
       if (countdownState === "countdowning") {
-        setCountDown((countDown) => {
+        onCountDownChanged((countDown) => {
           if (timeItems.some((item) => item.time === countDown - 1000)) {
-            toggleIsMusicPlaying(true);
+            onIsMusicPlayingChanged(true);
           }
-          if (countDown === 1000) toggleIsMusicPlaying(true);
+          if (countDown === 1000) onIsMusicPlayingChanged(true);
           return countDown - 1000;
         });
       }

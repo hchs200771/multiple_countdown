@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import CountdownTimer from "./components/CountdownTimer";
 import CountdownSetter from "./components/CountdownSetter";
@@ -15,7 +14,7 @@ export default function App() {
     { time: 55 * 1000, hours: 0, mins: 0, secs: 55 },
   ]);
   const [countDown, setCountDown] = useState(startTime);
-  const [isMusicPlaying, toggleIsMusicPlaying] = useState(false);
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   // 計時器三種狀態： 倒數中：'countdowning',  暫停：'pause', 等待開始：'waitStart'
   const [countdownState, setCountdownState] = useState("waitStart");
 
@@ -31,9 +30,9 @@ export default function App() {
           setStartTime={setStartTime}
           countDown={countDown}
           setTimeItems={setTimeItems}
-          setCountDown={setCountDown}
+          onCountDownChanged={setCountDown}
           isMusicPlaying={isMusicPlaying}
-          toggleIsMusicPlaying={toggleIsMusicPlaying}
+          onIsMusicPlayingChanged={setIsMusicPlaying}
           countdownState={countdownState}
           setCountdownState={setCountdownState}
         />
@@ -42,7 +41,7 @@ export default function App() {
           setStartTime={setStartTime}
           timeItems={timeItems}
           setTimeItems={setTimeItems}
-          setCountDown={setCountDown}
+          onCountDownChanged={setCountDown}
           countdownState={countdownState}
         ></CountdownSetter>
       </section>

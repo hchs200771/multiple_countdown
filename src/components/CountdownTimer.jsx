@@ -1,41 +1,40 @@
-import React from "react";
 import clsx from "clsx";
 import { useRef, useEffect } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import DateTimeDisplay from "./DateTimeDisplay";
 import useCountdown from "../hooks/useCountdown";
-import soundfile from "../johnnie-holiday-wild.mp3";
+import soundfile from "../assets/johnnie-holiday-wild.mp3";
 
 const CountdownTimer = ({
   startTime,
   timeItems,
   countDown,
-  setCountDown,
+  onCountDownChanged,
   isMusicPlaying,
-  toggleIsMusicPlaying,
+  onIsMusicPlayingChanged,
   countdownState,
   setCountdownState,
 }) => {
   const [hours, minutes, seconds] = useCountdown(
     countDown,
-    setCountDown,
+    onCountDownChanged,
     startTime.time,
     countdownState,
     timeItems,
-    toggleIsMusicPlaying
+    onIsMusicPlayingChanged
   );
   const musicPlayer = useRef();
   const startCountdown = () => {
     if (countdownState === "countdowning") {
       setCountdownState("pause");
-      toggleIsMusicPlaying(false);
+      onIsMusicPlayingChanged(false);
     } else {
       setCountdownState("countdowning");
     }
   };
   const cancelCountdown = () => {
     setCountdownState("waitStart");
-    toggleIsMusicPlaying(false);
+    onIsMusicPlayingChanged(false);
   };
   useEffect(() => {
     if (isMusicPlaying && countdownState === "countdowning") {
@@ -45,7 +44,7 @@ const CountdownTimer = ({
     }
   }, [isMusicPlaying]);
   const setToMute = () => {
-    toggleIsMusicPlaying(false);
+    onIsMusicPlayingChanged(false);
   };
 
   return (

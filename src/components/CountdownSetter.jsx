@@ -7,7 +7,7 @@ const CountdownSetter = ({
   setStartTime,
   timeItems,
   setTimeItems,
-  setCountDown,
+  onCountDownChanged,
   countdownState,
 }) => {
   const [hours, setHours] = useState(0);
@@ -41,7 +41,7 @@ const CountdownSetter = ({
       secs,
     };
     setStartTime(newStartTime);
-    setCountDown(newTime);
+    onCountDownChanged(newTime);
   };
 
   const addTime = () => {
