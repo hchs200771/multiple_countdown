@@ -70,13 +70,9 @@ const CountdownSetter = ({
       secs,
     };
     const newTimeItems = [...timeItems];
-    let toBeAddedTimeItemIndex = -1;
-    for (let i = 0; i < newTimeItems.length; i++) {
-      if (newTime < newTimeItems[i].time) {
-        toBeAddedTimeItemIndex = i;
-        break;
-      }
-    }
+    let toBeAddedTimeItemIndex = newTimeItems.findIndex(
+      (item) => newTime < item.time
+    );
     if (toBeAddedTimeItemIndex >= 0) {
       newTimeItems.splice(toBeAddedTimeItemIndex, 0, newTimeItem);
     } else {
@@ -86,11 +82,7 @@ const CountdownSetter = ({
   };
 
   const deleteTimeItem = (time) => {
-    const newTimes = [...timeItems];
-    const toBeDeletedTimeItemIndex = newTimes.findIndex(
-      (todo) => todo.time === time
-    );
-    newTimes.splice(toBeDeletedTimeItemIndex, 1);
+    const newTimes = timeItems.filter((todo) => todo.time !== time);
     setTimeItems(newTimes);
   };
 

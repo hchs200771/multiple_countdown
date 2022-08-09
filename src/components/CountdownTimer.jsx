@@ -36,6 +36,9 @@ const CountdownTimer = ({
     setCountdownState("waitStart");
     onIsMusicPlayingChanged(false);
   };
+  const setToMute = () => {
+    onIsMusicPlayingChanged(false);
+  };
   useEffect(() => {
     if (isMusicPlaying && countdownState === "countdowning") {
       musicPlayer.current.audio.current.play();
@@ -43,9 +46,6 @@ const CountdownTimer = ({
       musicPlayer.current.audio.current.pause();
     }
   }, [isMusicPlaying]);
-  const setToMute = () => {
-    onIsMusicPlayingChanged(false);
-  };
 
   return (
     <div>

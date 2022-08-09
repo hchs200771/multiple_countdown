@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import FormatCountdown from "../helpers/formatCountdown";
 
 const useCountdown = (
   countDown,
@@ -8,50 +9,38 @@ const useCountdown = (
   timeItems,
   onIsMusicPlayingChanged
 ) => {
-  let interval;
+  const shouldPlayMusic = timeItems.some((item) => item.time === countDown);
 
   useEffect(() => {
-    if (countdownState === "pause") {
+    const interval = setInterval(() => {
+      if (countdownState === "countdowning") {
+        onCountDownChanged((countDown) => countDown - 1000);
+      }
+    }, 1000);
+    if (countdownState === "pause" || countdownState === "waitStart") {
       clearInterval(interval);
-    } else if (countdownState === "waitStart") {
-      clearInterval(interval);
-      onCountDownChanged(startTime);
     }
+    return () => clearInterval(interval);
   }, [countdownState]);
 
   useEffect(() => {
-    interval = setInterval(() => {
-      if (countdownState === "countdowning") {
-        onCountDownChanged((countDown) => {
-          if (timeItems.some((item) => item.time === countDown - 1000)) {
-            onIsMusicPlayingChanged(true);
-          }
-          if (countDown === 1000) onIsMusicPlayingChanged(true);
-          return countDown - 1000;
-        });
-      }
-    }, 1000);
+    if (countdownState === "waitStart") {
+      onCountDownChanged(startTime);
+    }
+  }, [countdownState, startTime]);
 
-    return () => clearInterval(interval);
-  }, [startTime, countdownState]);
+  useEffect(() => {
+    if (countdownState === "countdowning" && shouldPlayMusic) {
+      onIsMusicPlayingChanged(true);
+    }
+  }, [shouldPlayMusic, countdownState]);
 
-  return getReturnValues(countDown);
-};
+  useEffect(() => {
+    if (countdownState === "countdowning" && countDown === 0)
+      onIsMusicPlayingChanged(true);
+  }, [countDown, countdownState]);
 
-// calculate time left
-const getReturnValues = (countDown) => {
-  let hours, minutes, seconds;
-  if (countDown >= 0) {
-    hours = Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60));
-    seconds = Math.floor((countDown % (1000 * 60)) / 1000);
-  } else {
-    hours = Math.ceil((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    minutes = Math.ceil((countDown % (1000 * 60 * 60)) / (1000 * 60));
-    seconds = Math.ceil((countDown % (1000 * 60)) / 1000);
-  }
-
-  return [hours, minutes, seconds];
+  return FormatCountdown(countDown);
 };
 
 export default useCountdown;
