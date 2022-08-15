@@ -95,7 +95,7 @@ const CountdownSetter = ({
         {/* 排程設定及 list */}
         <div className="mt-2 flex flex-col rounded font-sans font-extrabold sm:pl-20 lg:flex-row">
           {/* 排程設定*/}
-          <div className="h-30 mt-1 flex w-full flex-col items-center justify-evenly rounded-2xl bg-lime-600 sm:w-4/5 lg:w-3/5">
+          <div className="h-30 my-2 flex w-full flex-col items-center justify-evenly rounded-2xl bg-lime-600 shadow-2xl sm:w-4/5 lg:w-3/5">
             <div className="m-10 my-3 flex w-full justify-center rounded font-sans sm:w-4/5 lg:w-2/3">
               <label className="flex flex-col text-center text-2xl">
                 Hours
@@ -154,8 +154,8 @@ const CountdownSetter = ({
             </div>
           </div>
           {/* 排程 list */}
-          <ul className="w-full p-1  lg:w-4/12">
-            <li className="mx-auto mt-1 flex w-11/12 justify-evenly rounded-xl bg-sky-400 p-1 text-center text-2xl">
+          <ul className="w-full p-1 lg:w-4/12">
+            <li className="mx-auto mt-1 flex w-11/12 justify-evenly rounded-xl bg-sky-400 p-1 text-center text-2xl shadow-xl">
               <span className=" text-gray-500"> 開始時間 </span>
               {startTime.hours} : {startTime.mins} : {startTime.secs}
             </li>
@@ -165,7 +165,7 @@ const CountdownSetter = ({
             {timeItems.map((timeItem) => (
               <li
                 key={timeItem.time}
-                className="mx-auto mt-2 flex w-8/12 justify-around rounded-xl bg-yellow-200 p-1 text-center"
+                className="mx-auto mt-2 flex w-8/12 justify-around rounded-xl bg-yellow-200 p-1 text-center shadow-xl"
               >
                 <ClockSVG></ClockSVG>
                 <p className="flex w-28 items-center text-xl">

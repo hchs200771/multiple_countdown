@@ -52,7 +52,7 @@ const CountdownTimer = ({
       <div className="flex justify-center gap-2">
         <div
           className={clsx(
-            "mx-auto w-full items-center justify-between rounded-2xl bg-orange-100  pt-5 font-sans text-red-500 lg:w-2/3",
+            "mx-auto w-full items-center justify-between rounded-2xl bg-orange-100 pt-5  font-sans text-red-500 shadow-2xl lg:w-2/3",
             countdownState === "countdowning" ? "bg-orange-300" : ""
           )}
         >
