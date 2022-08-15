@@ -12,23 +12,23 @@ const CountdownSetter = ({
   onCountDownChanged,
   countdownState,
 }) => {
-  const [hours, setHours] = useState(0);
-  const [mins, setMins] = useState(0);
-  const [secs, setSecs] = useState(0);
-  const hoursChangeHandler = (e) => {
-    setHours(e.target.value);
-  };
-  const minsChangeHandler = (e) => {
-    setMins(e.target.value);
-  };
-  const secsChangeHandler = (e) => {
-    setSecs(e.target.value);
+  // const [hours, setHours] = useState(0);
+  // const [mins, setMins] = useState(0);
+  // const [secs, setSecs] = useState(0);
+  const [time, setTime] = useState({
+    h: 0,
+    m: 0,
+    s: 0,
+  });
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    setTime({ ...time, [name]: value });
   };
 
   const addStartTime = () => {
-    const newTime = (hours * 60 * 60 + mins * 60 + Number(secs)) * 1000;
+    const newTime = (time.h * 60 * 60 + time.m * 60 + Number(time.s)) * 1000;
 
-    if (!Number(hours + mins + secs)) {
+    if (!Number(time.h + time.m + time.s)) {
       alert("開始時間不能為 0");
       return;
     }
@@ -38,18 +38,17 @@ const CountdownSetter = ({
     }
     const newStartTime = {
       time: newTime,
-      hours,
-      mins,
-      secs,
+      hours: time.h,
+      mins: time.m,
+      secs: time.s,
     };
     setStartTime(newStartTime);
     onCountDownChanged(newTime);
   };
 
   const addTime = () => {
-    const newTime = (hours * 60 * 60 + mins * 60 + Number(secs)) * 1000;
-
-    if (!Number(hours + mins + secs)) {
+    const newTime = (time.h * 60 * 60 + time.m * 60 + Number(time.s)) * 1000;
+    if (!Number(time.h + time.m + time.s)) {
       alert("時段不能為 0");
       return;
     }
@@ -59,15 +58,15 @@ const CountdownSetter = ({
     }
     if (newTime >= startTime.time) {
       alert(
-        `排程時間 [${hours} : ${mins} : ${secs}] 需小於開始時間 [${startTime.hours} : ${startTime.mins} : ${startTime.secs}]`
+        `排程時間 [${time.h} : ${time.m} : ${time.s}] 需小於開始時間 [${startTime.hours} : ${startTime.mins} : ${startTime.secs}]`
       );
       return;
     }
     const newTimeItem = {
       time: newTime,
-      hours,
-      mins,
-      secs,
+      hours: time.h,
+      mins: time.m,
+      secs: time.s,
     };
     const newTimeItems = [...timeItems];
     let toBeAddedTimeItemIndex = newTimeItems.findIndex(
@@ -104,8 +103,9 @@ const CountdownSetter = ({
                   className="box-border h-14 w-14 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="99"
-                  onChange={hoursChangeHandler}
-                  value={hours}
+                  name="h"
+                  onChange={changeHandler}
+                  value={time.h}
                 />
               </label>
               <p className="mt-9 w-10 px-1 text-center text-4xl text-red-400 lg:px-0">
@@ -118,8 +118,9 @@ const CountdownSetter = ({
                   className="box-border h-14 w-14 rounded  border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="59"
-                  onChange={minsChangeHandler}
-                  value={mins}
+                  name="m"
+                  onChange={changeHandler}
+                  value={time.m}
                 />
               </label>
               <p className="mt-9 w-10 px-1 text-center text-4xl text-red-400 lg:px-0">
@@ -132,8 +133,9 @@ const CountdownSetter = ({
                   className="box-border h-14 w-14 rounded border-0 border-b pl-2 text-center text-4xl font-bold hover:bg-red-100 focus:bg-red-300 sm:w-20"
                   min="0"
                   max="59"
-                  onChange={secsChangeHandler}
-                  value={secs}
+                  name="s"
+                  onChange={changeHandler}
+                  value={time.s}
                 />
               </label>
             </div>
