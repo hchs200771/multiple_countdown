@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import FormatCountdown from "../helpers/formatCountdown";
+import FormatCountdown from "../helpers/FormatCountdown";
 
 const useCountdown = (
   countDown,
