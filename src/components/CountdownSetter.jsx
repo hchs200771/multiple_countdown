@@ -1,8 +1,6 @@
 import React from "react";
 import clsx from "clsx";
 import { useState } from "react";
-import ClockSVG from "../assets/ClockSVG";
-import DeleteSVG from "../assets/DeleteSVG";
 
 const CountdownSetter = ({
   startTime,
@@ -169,7 +167,20 @@ const CountdownSetter = ({
                 key={timeItem.time}
                 className="mx-auto mt-2 flex w-8/12 justify-around rounded-xl bg-yellow-200 p-1 text-center shadow-xl"
               >
-                <ClockSVG></ClockSVG>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mt-0.5 h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
                 <p className="flex w-28 items-center text-xl">
                   {timeItem.hours} : {timeItem.mins} : {timeItem.secs}
                 </p>
@@ -178,7 +189,20 @@ const CountdownSetter = ({
                   className="ml-1"
                 >
                   <div className="rounded bg-red-200">
-                    <DeleteSVG></DeleteSVG>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
                   </div>
                 </button>
               </li>
