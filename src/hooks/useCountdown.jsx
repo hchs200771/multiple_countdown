@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import FormatCountdown from "../helpers/FormatCountdown";
+import FormatTime from "../helpers/FormatTime";
 
 const useCountdown = (
   countDown,
@@ -40,7 +40,7 @@ const useCountdown = (
       onIsMusicPlayingChanged(true);
   }, [countDown, countdownState]);
 
-  return FormatCountdown(countDown);
+  return FormatTime(countDown);
 };
 
 export default useCountdown;

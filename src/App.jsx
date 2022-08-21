@@ -27,7 +27,6 @@ export default function App() {
         <CountdownTimer
           startTime={startTime}
           timeItems={timeItems}
-          setStartTime={setStartTime}
           countDown={countDown}
           setTimeItems={setTimeItems}
           onCountDownChanged={setCountDown}
@@ -48,9 +47,8 @@ export default function App() {
       <footer className="mt-5 flex flex-col items-center">
         <ul className="m-1/2 mx-auto list-inside list-disc">
           <li>「設定開始時間」可以決定倒數的時間</li>
-          <li>按下「開始」倒數後，無法修改開始時間跟提醒排程，除非重置</li>
-          <li>按 ↑ 或 ↓ 可調整數字。 </li>
-          <li>按下「關聲音」關掉音樂後，下一個排程時間或是歸零又會再次響起</li>
+          <li>按下「開始」倒數後，無法修改開始時間跟提醒排程，除非「重置」</li>
+          <li>按下「關聲音」關掉音樂後，下一個排程時間或是歸零時會再次響起</li>
         </ul>
         <p className="mt-5">Copyright © 2022 Max Huang</p>
       </footer>

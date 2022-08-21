@@ -1,4 +1,4 @@
-const FormatCountdown = (countdown) => {
+const FormatTime = (countdown) => {
   let hours, minutes, seconds;
   if (countdown >= 0) {
     hours = Math.floor((countdown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -12,4 +12,4 @@ const FormatCountdown = (countdown) => {
 
   return [hours, minutes, seconds];
 };
-export default FormatCountdown;
+export default FormatTime;

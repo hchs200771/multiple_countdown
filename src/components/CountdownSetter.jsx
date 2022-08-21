@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { useState } from "react";
+import FormatTime from "../helpers/FormatTime";
 
 const CountdownSetter = ({
   startTime,
@@ -10,9 +11,6 @@ const CountdownSetter = ({
   onCountDownChanged,
   countdownState,
 }) => {
-  // const [hours, setHours] = useState(0);
-  // const [mins, setMins] = useState(0);
-  // const [secs, setSecs] = useState(0);
   const [time, setTime] = useState({
     h: 0,
     m: 0,
@@ -25,8 +23,8 @@ const CountdownSetter = ({
 
   const addStartTime = () => {
     const newTime = (time.h * 60 * 60 + time.m * 60 + Number(time.s)) * 1000;
-
-    if (!Number(time.h + time.m + time.s)) {
+    const [hours, minutes, seconds] = FormatTime(newTime);
+    if (!(hours + minutes + seconds)) {
       alert("開始時間不能為 0");
       return;
     }
@@ -36,9 +34,9 @@ const CountdownSetter = ({
     }
     const newStartTime = {
       time: newTime,
-      hours: time.h,
-      mins: time.m,
-      secs: time.s,
+      hours: hours,
+      mins: minutes,
+      secs: seconds,
     };
     setStartTime(newStartTime);
     onCountDownChanged(newTime);
@@ -46,7 +44,8 @@ const CountdownSetter = ({
 
   const addTime = () => {
     const newTime = (time.h * 60 * 60 + time.m * 60 + Number(time.s)) * 1000;
-    if (!Number(time.h + time.m + time.s)) {
+    const [hours, minutes, seconds] = FormatTime(newTime);
+    if (!(hours + minutes + seconds)) {
       alert("時段不能為 0");
       return;
     }
@@ -56,15 +55,15 @@ const CountdownSetter = ({
     }
     if (newTime >= startTime.time) {
       alert(
-        `排程時間 [${time.h} : ${time.m} : ${time.s}] 需小於開始時間 [${startTime.hours} : ${startTime.mins} : ${startTime.secs}]`
+        `排程時間 [${hours} : ${minutes} : ${seconds}] 需小於開始時間 [${startTime.hours} : ${startTime.mins} : ${startTime.secs}]`
       );
       return;
     }
     const newTimeItem = {
       time: newTime,
-      hours: time.h,
-      mins: time.m,
-      secs: time.s,
+      hours: hours,
+      mins: minutes,
+      secs: seconds,
     };
     const newTimeItems = [...timeItems];
     let toBeAddedTimeItemIndex = newTimeItems.findIndex(
