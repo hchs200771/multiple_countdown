@@ -13,7 +13,7 @@ export default function App() {
     { time: 38 * 1000, hours: 0, mins: 0, secs: 38 },
     { time: 55 * 1000, hours: 0, mins: 0, secs: 55 },
   ]);
-  const [countDown, setCountDown] = useState(startTime);
+  const [countDown, setCountDown] = useState(startTime.time);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   // 計時器三種狀態： 倒數中：'countdowning',  暫停：'pause', 等待開始：'waitStart'
   const [countdownState, setCountdownState] = useState("waitStart");

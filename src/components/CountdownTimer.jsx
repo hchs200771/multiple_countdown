@@ -40,9 +40,9 @@ const CountdownTimer = ({
     onIsMusicPlayingChanged(false);
   };
   useEffect(() => {
-    if (isMusicPlaying && countdownState === "countdowning") {
+    if (isMusicPlaying) {
       musicPlayer.current.audio.current.play();
-    } else if (!isMusicPlaying) {
+    } else {
       musicPlayer.current.audio.current.pause();
     }
   }, [isMusicPlaying]);
@@ -52,8 +52,12 @@ const CountdownTimer = ({
       <div className="flex justify-center gap-2">
         <div
           className={clsx(
-            "mx-auto w-full items-center justify-between rounded-2xl bg-orange-100 pt-5  font-sans text-red-500 shadow-2xl lg:w-2/3",
-            countdownState === "countdowning" ? "bg-orange-300" : ""
+            "mx-auto w-full items-center justify-between",
+            "rounded-2xl bg-orange-100 pt-5 font-sans text-red-500 shadow-2xl lg:w-2/3",
+            isMusicPlaying
+              ? "animate-bounce bg-orange-500 text-red-700 transition-all"
+              : "",
+            countdownState === "countdowning" ? "bg-orange-400" : ""
           )}
         >
           <div className="mx-auto flex w-9/12 justify-center text-6xl">
@@ -86,7 +90,10 @@ const CountdownTimer = ({
             </button>
             <button
               onClick={setToMute}
-              className="h-12 w-28 rounded-xl bg-green-200 py-1 text-center font-bold text-black ring-1 ring-slate-400 hover:bg-green-400"
+              className={clsx(
+                "h-12 w-28 rounded-xl bg-green-200 py-1 text-center font-bold text-black ring-1 ring-slate-400 hover:bg-green-400",
+                isMusicPlaying ? "h-16 w-32 text-2xl" : ""
+              )}
             >
               關聲音
             </button>
