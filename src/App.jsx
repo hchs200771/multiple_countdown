@@ -44,11 +44,27 @@ export default function App() {
           countdownState={countdownState}
         ></CountdownSetter>
       </section>
-      <footer className="mt-5 flex flex-col items-center">
-        <ul className="m-1/2 mx-auto list-inside list-disc">
-          <li>「設定開始時間」可以決定倒數的時間</li>
-          <li>按下「開始」倒數後，無法修改開始時間跟提醒排程，除非「重置」</li>
-          <li>按下「關聲音」關掉音樂後，下一個排程時間或是歸零時會再次響起</li>
+      <footer className="mt-10 flex flex-col items-center">
+        <ul className="m-1/2 mx-auto list-inside list-disc font-bold">
+          <li className="mt-2">
+            <span className="rounded bg-indigo-200 p-1">開始</span>：
+            開始進行倒數，這時無法修改開始時間跟提醒排程，除非「重置」
+          </li>
+          <li className="mt-2">
+            <span className="rounded bg-red-200 p-1">重置</span>：回到開始時間
+          </li>
+          <li className="mt-2">
+            <span className="rounded bg-green-200 p-1">關聲音</span>：
+            關掉提醒音樂後，下一個排程時間或是歸零時會再次響起
+          </li>
+          <li className="mt-2">
+            <span className="rounded bg-sky-400 p-1">設定開始時間</span>
+            ：決定倒數開始時間
+          </li>
+          <li className="mt-2">
+            <span className="rounded bg-yellow-200 p-1">新增排程時間</span>
+            ：增加新的提醒排程
+          </li>
         </ul>
         <p className="mt-5">Copyright © 2022 Max Huang</p>
       </footer>
