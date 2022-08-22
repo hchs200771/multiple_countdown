@@ -180,7 +180,7 @@ const CountdownSetter = ({
                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <p className="flex w-28 items-center text-xl">
+                <p className="flex w-32 items-center text-xl">
                   {timeItem.hours} : {timeItem.mins} : {timeItem.secs}
                 </p>
                 <button

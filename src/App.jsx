@@ -65,6 +65,9 @@ export default function App() {
             <span className="rounded bg-yellow-200 p-1">新增排程時間</span>
             ：增加新的提醒排程
           </li>
+          <li className="mt-2">
+            想要時間歸零 1 分鐘後提醒，可以設定 minutes 為 「-1」
+          </li>
         </ul>
         <p className="mt-5">Copyright © 2022 Max Huang</p>
       </footer>
