@@ -4,6 +4,7 @@ import AudioPlayer from "react-h5-audio-player";
 import DateTimeDisplay from "./DateTimeDisplay";
 import useCountdown from "../hooks/useCountdown";
 import soundfile from "../assets/johnnie-holiday-wild.mp3";
+import { AddZeroToTime } from "../helpers/FormatTime";
 
 const CountdownTimer = ({
   startTime,
@@ -62,15 +63,19 @@ const CountdownTimer = ({
         >
           <div className="mx-auto flex w-9/12 justify-center text-6xl">
             <DateTimeDisplay
-              value={hours}
+              value={AddZeroToTime(hours)}
               type={"Hours"}
               className="sm:w-1/4"
             />
             <p>:</p>
-            <DateTimeDisplay value={minutes} type={"Mins"} className="w-1/4" />
+            <DateTimeDisplay
+              value={AddZeroToTime(minutes)}
+              type={"Mins"}
+              className="w-1/4"
+            />
             <p>:</p>
             <DateTimeDisplay
-              value={seconds}
+              value={AddZeroToTime(seconds)}
               type={"Seconds"}
               className="w-1/4"
             />

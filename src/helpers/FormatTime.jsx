@@ -13,3 +13,15 @@ const FormatTime = (countdown) => {
   return [hours, minutes, seconds];
 };
 export default FormatTime;
+
+const AddZeroToTime = (time) => {
+  if (time <= 0) {
+    return "00";
+  } else if (time > 0 && time < 10) {
+    return "0" + time;
+  } else {
+    return time;
+  }
+};
+
+export { AddZeroToTime };

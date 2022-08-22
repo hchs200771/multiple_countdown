@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { useState } from "react";
-import FormatTime from "../helpers/FormatTime";
+import FormatTime, { AddZeroToTime } from "../helpers/FormatTime";
 
 const CountdownSetter = ({
   startTime,
@@ -34,9 +34,9 @@ const CountdownSetter = ({
     }
     const newStartTime = {
       time: newTime,
-      hours: hours,
-      mins: minutes,
-      secs: seconds,
+      hours: AddZeroToTime(hours),
+      mins: AddZeroToTime(minutes),
+      secs: AddZeroToTime(seconds),
     };
     setStartTime(newStartTime);
     onCountDownChanged(newTime);
@@ -61,9 +61,9 @@ const CountdownSetter = ({
     }
     const newTimeItem = {
       time: newTime,
-      hours: hours,
-      mins: minutes,
-      secs: seconds,
+      hours: AddZeroToTime(hours),
+      mins: AddZeroToTime(minutes),
+      secs: AddZeroToTime(seconds),
     };
     const newTimeItems = [...timeItems];
     let toBeAddedTimeItemIndex = newTimeItems.findIndex(

@@ -5,13 +5,13 @@ import CountdownSetter from "./components/CountdownSetter";
 export default function App() {
   const [startTime, setStartTime] = useState({
     time: 60 * 1000,
-    hours: 0,
-    mins: 1,
-    secs: 0,
+    hours: "00",
+    mins: "01",
+    secs: "00",
   });
   const [timeItems, setTimeItems] = useState([
-    { time: 38 * 1000, hours: 0, mins: 0, secs: 38 },
-    { time: 55 * 1000, hours: 0, mins: 0, secs: 55 },
+    { time: 38 * 1000, hours: "00", mins: "00", secs: "38" },
+    { time: 57 * 1000, hours: "00", mins: "00", secs: "57" },
   ]);
   const [countDown, setCountDown] = useState(startTime.time);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
@@ -19,7 +19,7 @@ export default function App() {
   const [countdownState, setCountdownState] = useState("waitStart");
 
   return (
-    <div className=" font-serif">
+    <div className="font-serif">
       <h1 className="m-4 flex justify-center gap-3 text-center text-5xl">
         Countdown Timer
       </h1>
