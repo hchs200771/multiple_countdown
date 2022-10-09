@@ -1,9 +1,8 @@
 # multiple_countdown
-This countdown can set multiple periods of time.
-If the timer meet the time you set, it will make noice.
-The goal of this tool is to help people who wannt be reminded more than one time.
+This countdown can be set for multiple periods of time. If the timer meets your set time, it will make a noise. This tool aims to help people who want to be reminded more than once.
 
-![image](https://user-images.githubusercontent.com/38179285/182289698-a2d7cf88-658e-4eda-8ee4-db104548532f.png)
+![](https://i.imgur.com/AoUakgS.png)
+
 
 
 
